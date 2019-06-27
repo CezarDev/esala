@@ -16,7 +16,7 @@ class Atendimento extends Model
      * @var array
      */
     protected $fillable = [
-    'nome', 'data', 'inicio','termino',
+    'nome', 'data', 'inicio','termino','aluno', 'curso',
     ];
      
      protected $table = 'atendimentos';}

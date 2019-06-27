@@ -47,6 +47,8 @@ class AtendimentoController extends Controller
             'data'       => $data['data'],
             'inicio'       => $data['inicio'],
             'termino'       => $data['termino'],
+            'aluno'       => $data['aluno'],
+            'curso'       => $data['curso'],
         ]);
     }
 

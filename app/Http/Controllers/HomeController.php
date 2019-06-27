@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Atendimento;
+use DB;
 
 class HomeController extends Controller
 {
@@ -32,5 +35,14 @@ class HomeController extends Controller
         return view('home');
     }
 
-    
+    public function atendimento(){
+
+        $atendimentos = DB::table('users')
+            ->join('atendimentos', 'atendimentos.nome', 'LIKE', 'users.nome')
+            ->select('data', 'inicio', 'termino','aluno','curso')
+            ->get();
+            return view('lista-atendimentos', ['atendimentos' => $atendimentos]);
+
+    }
+
 }

@@ -116,6 +116,10 @@
             <input name="termino"type="time" id="termino" class="form-control" required autofocus>
         </div>
 
+        <div class="form-group">
+            <h3 align="center">Aluno</h3><br/>
+            <input name="aluno" type="text" id="aluno" placeholder="Seu nome"class="form-control"required autofocus>
+
         <h3 align="center">Curso</h3> <br />
             <div class="form-group">
             <select name="curso" id="curso"class="form-control input-lg dynamic"data-dependent="horario_permanencia" required autofocus>
