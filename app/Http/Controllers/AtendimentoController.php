@@ -7,6 +7,7 @@ use DB;
 use App\Dado;
 use App\User;
 use App\Atendimento; 
+use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Pesquisa; 
 class AtendimentoController extends Controller
 {
@@ -30,6 +31,7 @@ class AtendimentoController extends Controller
     function fetch(Request $request){
 
     	$select = $request->get('select');
+        //$input = $request->get('input');
     	$value = $request->get('value');
     	$dependent = $request->get('dependent');
     	$data = DB::table('users')->where($select, $value)->groupBy($dependent)->get();
@@ -44,20 +46,24 @@ class AtendimentoController extends Controller
     function create(array $data){
     	return Atendimento::create([
             'nome'       => $data['nome'],
+            'user_id'    => $data['user_id'],
             'data'       => $data['data'],
-            'inicio'       => $data['inicio'],
-            'termino'       => $data['termino'],
-            'aluno'       => $data['aluno'],
-            'curso'       => $data['curso'],
+            'inicio'     => $data['inicio'],
+            'termino'    => $data['termino'],
+            'aluno'      => $data['aluno'],
+            'curso'      => $data['curso'],
         ]);
     }
 
 
 
     function salvar(Request $request){
+        
+        //return view ('atendimento',dd($request));
+        
 
-    Atendimento::create($request->all());
-    return redirect("/")->with("mensagem", "Atendimento registrador com sucesso");
+     Atendimento::create($request->all());
+     return redirect("/")->with("mensagem", "Atendimento registrado com sucesso");
     }
 
 

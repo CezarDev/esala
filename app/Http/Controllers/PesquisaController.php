@@ -27,7 +27,7 @@ class PesquisaController extends Controller
     	$dependent = $request->get('dependent');
     	$data = DB::table('pesquisas')->where($select, $value)->groupBy($dependent)->get();
 
-    	$output = '<option value="">Select '.ucfirst($dependent).'</option>';
+    	$output = '<option value="">Selecione '.ucfirst($dependent).'</option>';
     	foreach ($data as $row) {
     		$output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
     	}

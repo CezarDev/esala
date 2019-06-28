@@ -16,6 +16,10 @@
                     @endif
                     <div align="center">
                     <a href="{{ url('/lista/atendimento') }}"><img height="250px"src="imagens\atendimento.png"alt="150px" ></a>
+
+                    <!-- <a href="admin/professor/{{$user->id }}/editar"class="btn btn-outline-warning btn-sm bt"><strong>Alterar</strong></a> -->
+
+
                     </div>
                     
                     

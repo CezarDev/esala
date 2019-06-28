@@ -53,6 +53,7 @@ Route::get('/dados', function(){
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/lista/atendimento', 'HomeController@atendimento')->name('lista.atendimento');
+//Route::get('/home', 'HomeController@pegarProfessores');
 
 	//Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 		Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
@@ -110,7 +111,9 @@ Route::prefix('admin')->group(function(){
 
 //Router::get('/professores', 'ProfessoresController@indexo');
 
+
 Route::get('/download', 'ProfessoresController@pdf');
+Route::get('/lista/download', 'HomeController@pdf');
 
 Route::get('/professores', 'ProfessoresController@index');
 

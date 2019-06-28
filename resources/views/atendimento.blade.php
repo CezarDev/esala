@@ -46,6 +46,7 @@
        margin-bottom: 10px;
 
     }
+
     body{
         background-color:#e6ffe6;
     }
@@ -63,55 +64,69 @@
         width:90px;
 
     }*/
+    #id{
+        float: right;
+    }
+     
     a:hover{
         opacity: 50px;
         background-color: lightgrey;
     }
     .opt a:hover{
         background-color: green;
-    }            
+    }  
+
+    .titulo{
+        font-family: cursive;
+        text-shadow: 2px;
+    }          
         </style>            
     </head>
-    <body>
-        <br />
+    <body><br><p class="titulo">
+        <h2 align="center">Registre seu atendimento na permanência</h2>
+    </p>
         <form method="POST" action="{{ url('/atendimento/salvar') }}">
         <div class="estilos">
             <div class="container box">
             <h3 align="center">Professor</h3> <br />
             <div class="form-group">
-            <select name="nome" id="nome"class="form-control input-lg dynamic"data-dependent="horario_permanencia" required autofocus>
+            <select name="nome" id="nome"class="form-control input-lg dynamic"data-dependent="id" required autofocus>
             <option value="">Nome</option>
             @foreach($lista as $nome)
             <option value="{{$nome->nome}}">
-                {{$nome->nome}}
+
+                {{$nome->nome}} 
+
+
             </option>
-            @endforeach    
-            </select>
+           <!--  <input type="hidden" name="id" id="id" value="{{$nome->id}}"> -->
+            @endforeach 
+            </select>            
         </div>
                 
-       <!--  <div class="form-group">
-            <h3 align="center">Permanência</h3><br />
-            <select name="horario_permanencia" id="horario_permanencia"class="form-control input-lg" required autofocus>
-            <option value="">Permanência</option>
-            @foreach($lista as $horario_permanencia)
-             <option value="{{$horario_permanencia->horario_permanencia}}">
-                {{$horario_permanencia->horario_permanencia}}
+       
+            <div class="form-group">
+            <select name="user_id" id="id"class="col-sm-2 form-control dynamic" required autofocus>
+            <option value="">id</option>
+            @foreach($lista as $id)
+             <option value="{{$id->id}}">
+                {{$id->id}}
             </option>
             @endforeach
             </select>
-        </div>     -->
-            
+         </div>
+            <br>
         <div class="form-group">
-            <h3 align="center">Data</h3><br />
+            <h3 align="center">Data</h3><br>
             <input  name="data" type="date" placeholder="Selecione o dia do atendimento"  id="data" class="form-control" required autofocus>
         </div> 
 
-        <div class="form-groupr">
-            <h3 align="center">Início</h3><br/>
+        <div class="form-group">
+            <h3 align="center">Início</h3><br>
             <input name="inicio" type="time" id="inicio" class="form-control" required autofocus>
         </div>
 
-        <div class="form-groupr">
+        <div class="form-group">
             <h3 align="center">Término</h3><br/>
             <input name="termino"type="time" id="termino" class="form-control" required autofocus>
         </div>
@@ -142,7 +157,7 @@
     </div>
     </div> 
 </form>
-        <br />   
+           
     <!-- <footer>
         <div class="roda">
             <a href=""></a>
@@ -150,7 +165,7 @@
     </footer>     -->
     </body>
 </html>
-<!-- <script>
+<script>
       $(document).ready(function(){
         $('.dynamic').change(function(){
                 if ($(this).val() !=''){
@@ -170,43 +185,43 @@
         });
 
         $('#nome').change(function(){
-        $('#horario_permanencia').val('');
+        $('#id').val('');
         });
         
         $('#nome').change(function(){
-        $('#horario_permanencia').val('');
+        $('#id').val('');
         });
 
       });
  
- $(function(){
- $.datepicker.regional['pt-BR'] = {
-  closeText: 'Fechar',
-  prevText: '&#x3c;Anterior',
-  nextText: 'Pr&oacute;ximo&#x3e;',
-  currentText: 'Hoje',
-  monthNames: ['Janeiro','Fevereiro','Mar&ccedil;o','Abril','Maio','Junho',
-  'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-  monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun',
-  'Jul','Ago','Set','Out','Nov','Dez'],
-  dayNames: ['Domingo','Segunda-feira','Ter&ccedil;a-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sabado'],
-  dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
-  dayNamesMin: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
-  weekHeader: 'Sm',
-  dateFormat: 'dd/mm/yy',
-  firstDay: 0,
-  isRTL: false,
-  showMonthAfterYear: false,
-  yearSuffix: ''};
- $.datepicker.setDefaults($.datepicker.regional['pt-BR']);
-});
+//  $(function(){
+//  $.datepicker.regional['pt-BR'] = {
+//   closeText: 'Fechar',
+//   prevText: '&#x3c;Anterior',
+//   nextText: 'Pr&oacute;ximo&#x3e;',
+//   currentText: 'Hoje',
+//   monthNames: ['Janeiro','Fevereiro','Mar&ccedil;o','Abril','Maio','Junho',
+//   'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+//   monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun',
+//   'Jul','Ago','Set','Out','Nov','Dez'],
+//   dayNames: ['Domingo','Segunda-feira','Ter&ccedil;a-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sabado'],
+//   dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
+//   dayNamesMin: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
+//   weekHeader: 'Sm',
+//   dateFormat: 'dd/mm/yy',
+//   firstDay: 0,
+//   isRTL: false,
+//   showMonthAfterYear: false,
+//   yearSuffix: ''};
+//  $.datepicker.setDefaults($.datepicker.regional['pt-BR']);
+// });
 
-    $(function() {        
-        //$.datepicker.regional[ "pt-BR" ] );
-        //$( "#datepicker" ).datepicker( $.datepicker.regional[ "pt-BR" ]);
+//     $(function() {        
+//         //$.datepicker.regional[ "pt-BR" ] );
+//         //$( "#datepicker" ).datepicker( $.datepicker.regional[ "pt-BR" ]);
 
 
-        $("#data").datepicker({dateFormat:'dd-mm-yy'});
+//         $("#data").datepicker({dateFormat:'dd-mm-yy'});
 
-    });
-  </script> -->
+//     });
+  </script> 

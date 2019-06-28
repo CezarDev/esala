@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use DB;
 use PDF;
+use Dado;
 
 class ProfessoresController extends Controller
 {

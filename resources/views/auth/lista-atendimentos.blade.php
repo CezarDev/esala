@@ -2,7 +2,7 @@
               <div class="card-header"><strong>Seus Atendimentos Registrados</strong> </div>
 
                 <div class="card-body" align="right">
-                    <a href="{{ url('download')}}" class="btn btn-outline-danger">PDF</a>
+                    <a href="{{ url('/lista/download')}}" class="btn btn-outline-danger">PDF</a>
 
                     <div class="panel-body">
                         <table class="table">

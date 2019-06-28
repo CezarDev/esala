@@ -16,8 +16,12 @@ class Dado extends Model
      * @var array
      */
     protected $fillable = [
-    'modalidade', 'curso', 'turma',
+    'modalidade', 'curso', 'turma','user_id'
     ];
      
      protected $table = 'dados';
+
+     public function user(){
+        return $this->benlogsTo(User::class);
+    }
 }

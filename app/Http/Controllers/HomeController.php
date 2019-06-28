@@ -26,23 +26,48 @@ class HomeController extends Controller
      */
      public function index()
     {
-        if (auth()->user()) {
-            $usuario = auth()->user();
-            $usuario->logado = 1;
-            $usuario->save();
-           // print_r($usuario);
-        }
-        return view('home');
+       $user = auth()->user();
+        
+        return view('home' , ['user' => $user]);
     }
 
     public function atendimento(){
 
-        $atendimentos = DB::table('users')
-            ->join('atendimentos', 'atendimentos.nome', 'LIKE', 'users.nome')
+            $usuarioLogado = auth()->user();
+            $usuarioId = $usuarioLogado->id;
+
+            $atendimentos = DB::table('atendimentos')
             ->select('data', 'inicio', 'termino','aluno','curso')
+            ->where('user_id','=', $usuarioId)
             ->get();
             return view('lista-atendimentos', ['atendimentos' => $atendimentos]);
 
+        
+
     }
+
+    public function pegarProfessores(){
+        $userio = auth()->user();
+        $user = $userios->id;
+        return view('home' , ['user' => $user]);
+    }
+
+    public function pdf()
+{
+    
+            $usuarioLogado = auth()->user();
+            $usuarioId = $usuarioLogado->id;
+
+            $atendimentos = DB::table('atendimentos')
+            ->select('data', 'inicio', 'termino','aluno','curso')
+            ->where('user_id','=', $usuarioId)
+            ->get();
+            return view('lista-atendimentos', ['atendimentos' => $atendimentos]);
+ 
+   
+    $pdf = PDF::loadView('lista-atendimentos',['atendimentos'=> $atendimentos])->setPaper('a4', 'landscape');
+    return $pdf->download();
+}
+      
 
 }
