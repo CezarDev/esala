@@ -119,7 +119,7 @@ Route::get('/professores', 'ProfessoresController@index');
 
 Route::get('/logados', 'LogadosController@index');
 
-Route::get('/disciplina/lista', 'Auth\DisciplinaController@listarDisciplina');
+//Route::get('/disciplina/lista', 'Auth\DisciplinaController@listarDisciplina');
 
 Route::get('/pesquisa', 'PesquisaController@index');
 Route::post('/pesquisa/fetch', 'PesquisaController@fetch')->name('pesquisa.fetch');

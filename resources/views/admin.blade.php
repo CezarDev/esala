@@ -13,7 +13,7 @@
                 <a href="{{ url('admin/todos') }}"><img height="150px"src="imagens\todosProfessores.png"alt="150px"></a>
             
             
-                 <a href="{{ url('admin/disciplina/lista') }}"><img height="150px"src="imagens\disciplinas.png"alt="150px"></a>
+                 <a href="{{ url('admin/disciplina/lista') }}"><img height="155px"src="imagens\disciplinas.png"alt="150px"></a>
              
              </div>
             </div>

@@ -39,10 +39,7 @@
             .top-right {
                 position: absolute;
                 right: 10px;
-                top: 35px;
-
-
-                
+                top: 35px;                
             }
 
             .logo{
@@ -53,8 +50,6 @@
             .content {
                 text-align: center;
                 margin-top: 0.1em;
-
-
             }
 
             .title {
@@ -64,6 +59,8 @@
 
                 
             }
+
+
 
             .links > a {
                 color: #636b6f;
@@ -88,6 +85,16 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .color:hover
+{
+        background:#e6ffe6;
+}
+.grow:hover
+{
+        -webkit-transform: scale(1.3);
+        -ms-transform: scale(1.3);
+        transform: scale(1.3);
+}
              
         </style>
     </head>
@@ -99,7 +106,7 @@
                     @endif     
 <div class="logo">
 
-                    <a href="http://www.ifms.edu.br/site"><img height="120px" src="imagens\ifms.png"alt="120px">
+                    <a href="http://www.ifms.edu.br/site"><img height="100px" src="imagens\ifms.png"alt="120px">
                     </a>
                 
         <div class="flex-center position-ref full-height">
@@ -112,9 +119,9 @@
                         <a href="{{ url('/home') }}">Home</a>                    
                        @else (Route::has('register'))
                             
-                            <a href="{{ route('login') }}"><img height="50px"src="imagens\professor.png"alt="50px"></a>
+                            <a href="{{ route('login') }}"><img height="73px"src="imagens\professor.png"alt="60px"></a>
                             
-                            <a href="{{ url('admin/logar') }}"><img height="50px"src="imagens\admin.png"alt="50px"></a>
+                            <a href="{{ url('admin/logar') }}"><img height="65px"src="imagens\admin.png"alt="50px"></a>
                         
                     @endauth
                     @if (Route::has('professores'))
@@ -130,8 +137,8 @@
                     <p class="e">e</p><p class="sala">SALA</p>
                 </div>
 
-                <div class="links">
-                    <a href="{{ url('/logados') }}">Entre</a>
+                <div class="links color grow">
+                    <a href="{{ url('/logados') }}">Ver Professores Logados</a>
                     
                 </div>
 
