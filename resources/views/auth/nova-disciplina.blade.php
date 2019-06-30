@@ -1,3 +1,10 @@
+<style>
+    .centro{
+        align-items: center;
+        margin-left: 230px;
+    }
+</style>
+
 @extends('layouts.app')
 
 @section('content')
@@ -7,14 +14,47 @@
             <div class="card">
                 <div class="card-header"><strong>Cadastrar Disciplina</strong></div>
 
-                <div class="card-body">
+                    <div class="card-body">
                     <form method="POST" action="{{ url('/admin/disciplina/salvar') }}">
-                        @csrf
+                      
+                        @csrf                    
+                        
+                         <div class="form-group row">
+                            <label for="user" class="col-md-4 col-form-label text-md-right">{{ __('Professor') }}</label>
+                             <div class="col-md-6" >   
+                            <select name="id"id="id"class="col-md-10 form-control "required autofocus>
+                                <option value="">Professor/Id</option>
+                            
+                                @foreach($professores as $nome)
+                                  <option value="{{$nome->id}}">
+
+                                   {{$nome->nome}} 
+                                   {{$nome->id}} 
+                                 </option>
+                                   
+                               <!--  <input type="hidden" name="id" id="id" value="{{$nome->id}}"> -->
+                                @endforeach 
+                            </select>  
+                            </div>    
+                       </div>   
 
                         <div class="form-group row">
                             <label for="user_id" class="col-md-4 col-form-label text-md-right">{{ __('Id Professor') }}</label>
+                             <div class="col-md-6" >   
+                            <select name="user_id"id="user_id"class="col-md-4 form-control "required autofocus>
+                                <option value="">Id</option>
+                            
+                                @foreach($professores as $nome)
+                                  <option value="{{$nome->id}}">
 
-                            <div class="col-md-6">
+                                   {{$nome->id}} 
+                                 </option>
+                                   
+                               <!--  <input type="hidden" name="id" id="id" value="{{$nome->id}}"> -->
+                                @endforeach 
+                            </select>  
+                            </div>
+                            <!-- <div class="col-md-6">
                                 <input id="user_id" type="text" class="form-control{{ $errors->has('user_id') ? ' is-invalid' : '' }}" name="user_id" value="{{ old('user_id') }}" required autofocus>
 
                                 @if ($errors->has('user_id'))
@@ -22,7 +62,7 @@
                                         <strong>{{ $errors->first('user_id') }}</strong>
                                     </span>
                                 @endif
-                            </div>
+                            </div> -->
                         </div>
 
                         <div class="form-group row">

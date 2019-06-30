@@ -7,20 +7,11 @@ use App\User;
 use DB;
 use PDF;
 use Dado;
-
+use Disciplina;
 class ProfessoresController extends Controller
 {
 
 public function index(){
-/*
-$professores = disciplinas::select('cidades.*', 'estados.id as est_id', 'estados.codigoibge as est_codigoibge')
-                            ->join('estados', 'estados.id', '=', 'cidades.estado_id')
-                            ->where('cidades.nome', 'LIKE', Input::get('term') . '%')
-                            ->orderBy('cidades.nome', 'asc')
-                            ->orderBy('estados.nome', 'asc')
-                            ->get();
-*/
-
 
 	$professores = DB::table('users')
             ->join('disciplinas', 'users.id', '=', 'user_id')
@@ -31,21 +22,13 @@ $professores = disciplinas::select('cidades.*', 'estados.id as est_id', 'estados
 	
 }
 
-/*
-public function get_dados(){
- $dados = DB::table('users')
-            ->join('disciplinas', 'users.id', '=', 'user_id')
-            ->select('nome', 'horario_permanencia','nome_disciplina','horario','sala','email')
-            ->get();
-            return $dados;
 
-}
-*/
 public function pdf()
 {
     $professores = DB::table('users')
             ->join('disciplinas', 'users.id', '=', 'user_id')
-            ->select('nome', 'horario_permanencia','nome_disciplina','horario','sala','email')
+            ->select('nome','local_permanencia', 'horario_permanencia','nome_disciplina','horario','sala','email')
+            ->orderBy('nome', 'asc')
             ->get();
  
    
@@ -53,14 +36,27 @@ public function pdf()
 	return $pdf->download();
 }
 
+
+
  public function listaProfessores(){
         $professores = DB::table('users')
-        ->select('nome', 'horario_permanencia', 'email')
+        ->select('nome', 'local_permanencia', 'horario_permanencia', 'email')
         ->orderBy('nome','asc')
         ->get();
         return view('listaProfessores' , ['professores' => $professores]);
         //return printf("format");
     }
+
+    public function professoresDisciplinas(){
+
+	$professores = DB::table('users')
+            ->join('disciplinas', 'users.id', '=', 'user_id')
+            ->select('nome', 'local_permanencia', 'horario_permanencia','nome_disciplina','horario','sala','email')
+            ->orderBy('nome', 'asc')
+            ->get();
+            return view('professores', ['professores' => $professores]);	
+	
+}
 /*
 public function df(){
 	$pdf = \App::make('dompdf.wrapper');

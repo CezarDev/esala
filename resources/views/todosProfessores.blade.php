@@ -5,13 +5,15 @@
     <div class="row justify-content-center">
 
 
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 
                 <div class="card-header"><strong>Todos professores cadastrados</strong></div>
 
                 <div class="card-body" align="right">
-                    <a href="{{url('/admin/novo/professor')}}" class="btn btn-outline-success">Novo Professor</a>
+                    <a href="{{url('/admin/novo/professor')}}" class="btn btn-success">Novo Professor</a>
+
+                    <a href="{{url('/admin')}}" class="btn btn-secondary">Voltar</a>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -27,13 +29,15 @@
 
                         <table class="table">
                             <th>Nome</th>
+                            <th>Local Permanência</th>
                             <th>Horário Permanência</th>
-                            <th>Email</th>
-                            <th>Fazer</th>
+                            <th>Email</th>                            
+                            <th>Ações</th>
                             <tbody>                                
                                 @foreach($professores as $user)
                                 <tr>
                             <td><strong>{{ $user->nome }}</strong></td>
+                            <td>{{ $user->local_permanencia }}</td>
                             <td>{{ $user->horario_permanencia }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
@@ -57,6 +61,9 @@
 </div>
 @endsection
 <style>
-   
+   .bt{
+    margin-bottom:2px;
+    margin-left: 2px;
+    display: flex;
     }
 </style>

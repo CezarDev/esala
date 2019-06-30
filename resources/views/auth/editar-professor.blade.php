@@ -27,6 +27,20 @@
                             </div>
                         </div>
 
+                         <div class="form-group row">
+                            <label for="local_permanencia" class="col-md-4 col-form-label text-md-right">{{ __('Local de Permanência') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="local_permanencia" type="text" class="form-control{{ $errors->has('local_permanencia') ? ' is-invalid' : '' }}" name="local_permanencia" value="{{ $user->local_permanencia }}" required autofocus>
+
+                                @if ($errors->has('horario_permanencia'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('local_permanencia') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Horario de Permanência') }}</label>
 

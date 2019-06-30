@@ -1,6 +1,6 @@
 <?php
 
-    var_dump($qtdMecanica);
+    var_dump($logados);
 
 
 

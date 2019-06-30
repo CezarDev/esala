@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use PDF;
 use App\Atendimento;
 use DB;
 
@@ -62,7 +63,7 @@ class HomeController extends Controller
             ->select('data', 'inicio', 'termino','aluno','curso')
             ->where('user_id','=', $usuarioId)
             ->get();
-            return view('lista-atendimentos', ['atendimentos' => $atendimentos]);
+            
  
    
     $pdf = PDF::loadView('lista-atendimentos',['atendimentos'=> $atendimentos])->setPaper('a4', 'landscape');

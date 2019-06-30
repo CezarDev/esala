@@ -9,6 +9,7 @@ use Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use DB;
 
 class AdminController extends Controller
 {
@@ -77,13 +78,21 @@ class AdminController extends Controller
         return view ('auth/nova-disciplina');
     }
 
-    public function store(Request $request){
+    public function storeDisc(Request $request){
 
         Disciplina::create($request->all());
 
-        return redirect("admin/disciplina/lista")->with("message", "Disciplina cadastrada com sucesso");
+        return redirect("admin/disciplina/lista")->with("mensagem","Disciplina cadastrada com sucesso");
     }
-
+//====================NOMES E ID's DOS PROFESSORES==========================
+    
+    public function nomeId(){
+         $professores = DB::table('users') 
+        ->orderBy('nome', 'asc')
+        ->get();
+        return view('auth/nova-disciplina')->with(['professores' => $professores]);
+    }
+//====================Chama a View de cadastro===============================
     public function cadastrarProfessor(){
         return view('auth/novo-professor');
     }
@@ -91,10 +100,12 @@ class AdminController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'nome' =>                ['required', 'string', 'max:255'],
-            'horario_permanencia' => ['required', 'string', 'max:60'],         
-            'email' =>               ['required', 'string', 'max:255', 'unique:users'],
-            'password' =>            ['required', 'string', 'min:8', 'confirmed'],
+            'nome'                 =>['required', 'string', 'max:255'],
+            'local_permanencia'    =>['required', 'string', 'max:80'],
+            'horario_permanencia'  =>['required', 'string', 'max:60'],         
+            'email'                =>['required', 'string', 'max:255', 'unique:users'],
+            'password'             =>['required', 'string', 'min:8', 'confirmed'],
+            
         ]);
     }
 
@@ -108,12 +119,14 @@ class AdminController extends Controller
     {
         return User::create([
             'nome'                => $data['nome'],
+            'local_permanencia'   => $data['local_permanencia'],
             'horario_permanencia' => $data['horario_permanencia'],
             'email'               => $data['email'],
             'password'            => Hash::make($data['password']),
+            
         ]);
 
-        \Session::flash('mensagem', '{{<strong>Professor Cadastrado!!!');
+        \Session::flash('mensagem', 'Professor Cadastrado!!!');
 
         return redirect("admin/todos")->with("message", "Professor cadastrado com sucesso");
     }
@@ -122,7 +135,7 @@ class AdminController extends Controller
 
         User::create($request->all());
 
-        \Session::flash('mensagem', '{{<strong>Professor Cadastrado!!!');
+        \Session::flash('mensagem', 'Professor Cadastrado!!!');
 
         return redirect("admin/todos")->with("message", "Professor cadastrado com sucesso");
     }
@@ -148,7 +161,8 @@ class AdminController extends Controller
          
            $dados = Validator::make($data, [
             'nome' =>                ['required', 'string', 'max:255'],
-            'horario_permanencia' => ['required', 'string', 'max:60'],         
+            'local_permanencia' =>   ['required', 'string', 'max:80'],          
+            'horario_permanencia' => ['required', 'string', 'max:60'],          
             'email' =>               ['required', 'string', 'max:255', 'unique:users'],
             'password' =>            ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -157,6 +171,7 @@ class AdminController extends Controller
 
             $user->update([
             'nome'                => $data['nome'],
+            'local_permanencia' => $data['local_permanencia'],
             'horario_permanencia' => $data['horario_permanencia'],
             'email'               => $data['email'],
             'password'            => Hash::make($data['password']),

@@ -2,7 +2,9 @@
 
 @section('content')
 <div class="container">
+
     <div class="row justify-content-center">
+
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Disciplinas Cadastradas</div>
@@ -15,7 +17,9 @@
                         <div class="alert alert-danger">{{Session::get('erromsg')}}</div>
                         @endif
 
-                     <a href="{{url('/admin/nova/disciplina')}}"class="btn btn-outline-success">Nova Disciplina</a>
+                     <a href="{{url('/admin/nova/disciplina')}}"class="btn btn-success">Nova Disciplina</a>
+
+                     <a href="{{url('/admin')}}" class="btn btn-secondary">Voltar</a>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}

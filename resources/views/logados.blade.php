@@ -11,7 +11,7 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="style5.css">
+    <!-- <link rel="stylesheet" href="style5.css"> -->
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -77,7 +77,7 @@ a, a:hover, a:focus {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background:#66ff66;/*#7386D5;*/
+    background:#80ff80;/*#7386D5;*/
     color: black;
     transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
     transform-origin: bottom left;
@@ -91,16 +91,19 @@ a, a:hover, a:focus {
 }
 
 #sidebar .sidebar-header {
+    color: #006600;
     padding: 20px;
-    background: green;
+    background: #33ff33;
     /*sejabemvindo*/
 }
 
+/*
+========LINHA=============
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #47748b;
+    border-bottom: 1px solid #47334b;
 }
-
+*/
 #sidebar ul p {
     color: black;/*#fff;*/
     padding: 10px;
@@ -114,13 +117,13 @@ a, a:hover, a:focus {
 }
 #sidebar ul li a:hover {
     color: black;
-    background: #fff;
+    background:#ccffcc;
     /*cor das letras no hover do side bar*/
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
     color: black;
-    background: #66ff66; /*destaque do home*/
+    background: #80ff80; /*destaque do home*/
     /*letra e fundo home*/
 }
 
@@ -136,11 +139,14 @@ a[data-toggle="collapse"] {
     right: 20px;
     transform: translateY(-50%);
 }
+.destaque{
+    background:#99ff99;
+}
 
 ul ul a {
     font-size: 1.2em !important;
     padding-left: 30px !important;
-    background:green;
+    background:#33ff33;
     
     /*fundo das ul*/
 }
@@ -157,10 +163,10 @@ ul.CTAs a {
     margin-bottom: 5px;
 }
 
-a.download {
+/*a.download {
     background: #fff;
     color: #7386D5;
-}
+}*/
 
 a.article, a.article:hover {
     background: #6d7fcc !important;
@@ -267,13 +273,13 @@ a.article, a.article:hover {
             <ul class="list-unstyled components">
                 <p>Ao logar os professores aparecem ao lado<!-- <img src="seta.png"width=50 height=30> --></p>
                 <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Páginas</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
                             <a href="{{url('/lista/professores')}}">Todos Professores</a>
                         </li>
                         <li>
-                            <a href="#">Professores/Disciplinas</a>
+                            <a href="{{url('/professores/disciplinas')}}">Professores/Disciplinas</a>
                         </li>
                         <li>
                             <a href="{{url('/')}}">Voltar</a>
@@ -281,14 +287,15 @@ a.article, a.article:hover {
                     </ul>
                 </li>
                 <li>
-                    <a href="#">About</a>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Teria um minuto?</a>
+                   <!--  <a href="#">About</a> -->
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle  destaque">Teria um minuto?</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="{{url('/pesquisa')}}">Participe da pesquisa</a>
+                            <a href="{{url('/atendimento')}}">Foi em alguma permanência?</a>
+                            
                         </li>
                          <li>
-                            <a href="{{url('/atendimento')}}">Foi em alguma permanência?</a>
+                            <a href="{{url('/pesquisa')}}">Participe da pesquisa</a>
                         </li>
                         <!--
                         <li>
@@ -297,21 +304,12 @@ a.article, a.article:hover {
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Portfolio</a>
+                    <a href="http://www.ifms.edu.br/site">IFMS</a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="#">Mensagens</a>
                 </li>
             </ul>
-
-            <!-- <ul class="list-unstyled CTAs">
-                <li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-                </li>
-                <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
-                </li>
-            </ul> -->
         </nav>
 
         <!-- Page Content Holder -->
@@ -332,57 +330,40 @@ a.article, a.article:hover {
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
+                                <a class="nav-link" href="{{ route('login') }}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('admin/logar') }}">Admin</a>
+                            </li>
+                            <!-- <li class="nav-item">
                                 <a class="nav-link" href="#">Page</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
             </nav>
             
-            <!-- <h2>Collapsible Sidebar Using Bootstrap 4</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
-            <div class="line"></div>
-
-            <h2>Lorem Ipsum Dolor</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-            <div class="line"></div>
-
-            <h2>Lorem Ipsum Dolor</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-            <div class="line"></div>
-
-            <h3>Lorem Ipsum Dolor</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-    </div> -->
+           
     <div class="panel-body">
                         <table class="table">
 
                             <th>Nome </th>
+                            <th>Local Permanência </th>
                             <th>Horário Permanência</th>
                             <th>email </th>
 
                             <tbody>
-                                
-                                @if($logados ==null)
-                                <script>alert('Não tem');</script>
+                                <!-- @foreach($logados as $user)
+                                @if($logados == (0))
+                                <script>prompt('Não tem');</script>
                                 </div>
-                                @endif
-
-                                @foreach($logados as $user)
+                                @endif -->
                                 <tr>
                             <td>{{ $user->nome }}</td>
+                            <td>{{ $user->local_permanencia }}</td>
                             <td>{{ $user->horario_permanencia }}</td>
                             <td>{{ $user->email }}</td>
                                 </tr>

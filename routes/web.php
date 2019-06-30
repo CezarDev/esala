@@ -39,15 +39,15 @@ Route::get('/nova/disciplina', function () {
     return view('disciplinas');
 });
 
-Route::get('/disciplina/lista', function(){
-	return view('lista-disciplina');
-
-});
-
-// Route::get('/dados', function(){
-// 	return view('dados');
+// Route::get('/disciplina/lista', function(){
+// 	return view('lista-disciplina');
 
 // });
+
+Route::get('/professores/disciplinas', function(){
+ 	return view('professores');
+
+});
 
 //Route::get('/login', 'Auth\LoginController@pegausuario');
 
@@ -87,6 +87,8 @@ Route::prefix('admin')->group(function(){
 			Route::get('/disciplina/lista', 'AdminController@listarDisciplina');
 
 			Route::get('/nova/disciplina', 'AdminController@cadastrarDisciplina')->name('nova-disciplina');
+
+			Route::get('/nova/disciplina', 'AdminController@nomeId')->name('nova-disciplina');
 			
 			Route::post('/disciplina/salvar', 'AdminController@store');
 
@@ -124,8 +126,8 @@ Route::prefix('admin')->group(function(){
 
 
 Route::get('/download', 'ProfessoresController@pdf');
-Route::get('/lista/download', 'HomeController@pdf');
 Route::get('/lista/professores', 'ProfessoresController@listaProfessores');
+Route::get('/professores/disciplinas', 'ProfessoresController@professoresDisciplinas');
 
 Route::get('/professores', 'ProfessoresController@index');
 
@@ -148,3 +150,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::post('disciplina', "Auth\DisciplinaController@store")
+Route::get('/lista/download', 'HomeController@pdf');
