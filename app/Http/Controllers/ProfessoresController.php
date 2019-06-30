@@ -52,6 +52,15 @@ public function pdf()
     $pdf = PDF::loadView('professores',['professores'=> $professores])->setPaper('a4', 'landscape');
 	return $pdf->download();
 }
+
+ public function listaProfessores(){
+        $professores = DB::table('users')
+        ->select('nome', 'horario_permanencia', 'email')
+        ->orderBy('nome','asc')
+        ->get();
+        return view('listaProfessores' , ['professores' => $professores]);
+        //return printf("format");
+    }
 /*
 public function df(){
 	$pdf = \App::make('dompdf.wrapper');

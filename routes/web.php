@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 
+
+
 Route::get('/professores', function () {
    return view('professores');
 });
@@ -42,10 +44,10 @@ Route::get('/disciplina/lista', function(){
 
 });
 
-Route::get('/dados', function(){
-	return view('dados');
+// Route::get('/dados', function(){
+// 	return view('dados');
 
-});
+// });
 
 //Route::get('/login', 'Auth\LoginController@pegausuario');
 
@@ -94,10 +96,19 @@ Route::prefix('admin')->group(function(){
 
 			Route::post('/alterar/{id}', 'AdminController@alterar');
 
+			Route::post('/alterar/disciplina/{id}', 'AdminController@alterarDisc');
+
 			Route::get('admin/professor/{id}/editar', 'AdminController@editar');
 
 			Route::get('admin/professor/{id}/excluir', 'AdminController@excluir');
 
+			Route::get('/disciplina/admin/disciplina/{id}/excluir', 'AdminController@excluirDisc');
+
+			Route::get('/disciplina/admin/disciplina/{id}/editar', 'AdminController@editarDisciplina');
+
+			Route::post('/disciplina/salvar', 'AdminController@storeDisc');
+
+			Route::get('/dados','GraficoController@index')->name('dados');
 
 			
 	
@@ -114,6 +125,7 @@ Route::prefix('admin')->group(function(){
 
 Route::get('/download', 'ProfessoresController@pdf');
 Route::get('/lista/download', 'HomeController@pdf');
+Route::get('/lista/professores', 'ProfessoresController@listaProfessores');
 
 Route::get('/professores', 'ProfessoresController@index');
 
@@ -129,7 +141,6 @@ Route::get('/atendimento', 'AtendimentoController@index');
 Route::post('/atendimento/fetch', 'AtendimentoController@fetch')->name('atendimento.fetch');
 Route::post('/atendimento/salvar', 'AtendimentoController@salvar')->name('atendimento.salvar');
 
-Route::get('/dados','GraficoController@index')->name('dados');
 Route::get('/contar','GraficoController@contaCurso');
 
 

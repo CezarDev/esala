@@ -16,6 +16,7 @@ class LogadosController extends Controller
   			$logados = DB::table('users')
             ->join('accesses', 'users.id', '=', 'user_id')
             ->select('nome', 'horario_permanencia', 'email')
+            ->orderBy('nome','asc')
             ->get();
             return view('logados', ['logados' => $logados]);
 

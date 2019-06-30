@@ -135,6 +135,13 @@ class AdminController extends Controller
         return view('auth/editar-professor')->with(['user' => $user]);
     }
 
+    public function editarDisciplina($id){
+        //var_dump($id);
+        $user = Disciplina::findOrFail($id);
+       //dd($user);
+        return view('auth/editar-disciplina')->with(['user' => $user]);
+    }
+
     /////// RECEBE O ID DO PROFESSORE VALIDA OS DADOS E ATUALIZA
     public function alterar(Request $request, $id){
          $data = $request->all();
@@ -163,10 +170,44 @@ class AdminController extends Controller
             }     
     }
 
+
+
+public function alterarDisc(Request $request, $id){
+         $data = $request->all();
+         
+           $dados = Validator::make($data, [
+            'nome_disciplina' =>                ['required', 'string', 'max:255'],
+            'horario' => ['required', 'string', 'max:60'],         
+            'sala' =>               ['required', 'string', 'max:255'],
+        ]);
+       
+            $user = Disciplina::findOrFail($id);
+
+            $user->update([
+            'nome_disciplina'                => $data['nome_disciplina'],
+            'horario' => $data['horario'],
+            'sala'               => $data['sala'],
+            ]);
+            
+            if($user){
+            return redirect("admin/disciplina/lista")->with("mensagem", "Disciplina alterada com sucesso");
+            }           
+            else {
+                return back()->with("erromsg", "Erro ao alterar disciplina ");
+            }     
+    }
+
+
     public function excluir(Request $request, $id){
         $user = User::findOrFail($id);
         $user->delete();
         return redirect("admin/todos")->with("mensagem", "Cadastro excluído com sucesso");
+    }
+
+     public function excluirDisc(Request $request, $id){
+        $user = Disciplina::findOrFail($id);
+        $user->delete();
+        return redirect("admin/disciplina/lista")->with("mensagem", "Disciplina excluída com sucesso");
     }
 
 }

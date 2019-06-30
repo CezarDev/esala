@@ -7,6 +7,7 @@
                     <div class="panel-body">
                         <table class="table">
                             <tr>
+                            <th>Professor</th>    
                             <th>Data</th>
                             <th>Início</th>
                             <th>Término</th>
@@ -16,6 +17,7 @@
                             <tbody>                                
                                 @foreach($atendimentos as $user)
                                 <tr>
+                            <td>{{ $user->professor }}</td>        
                             <td>{{ $user->data }}</td>
                             <td>{{ $user->inicio }}</td>
                             <td>{{ $user->termino}}</td>
