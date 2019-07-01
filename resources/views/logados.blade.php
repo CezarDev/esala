@@ -356,11 +356,7 @@ a.article, a.article:hover {
                             <th>email </th>
 
                             <tbody>
-                                <!-- @foreach($logados as $user)
-                                @if($logados == (0))
-                                <script>prompt('Não tem');</script>
-                                </div>
-                                @endif -->
+                              @foreach($logados as $user)
                                 <tr>
                             <td>{{ $user->nome }}</td>
                             <td>{{ $user->local_permanencia }}</td>
