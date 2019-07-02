@@ -22,12 +22,17 @@ class GraficoController extends Controller
 
 		$qtdEletro = DB::table('dados')
 		->select('curso')
-		->where('curso', 'LIKE', "Eletrotécnica",)
+		->where('curso', 'LIKE', "Eletrotécnica")
 		->count();
 
 		$qtdInfo = DB::table('dados')
 		->select('curso')
-		->where('curso', 'LIKE', "Informática",)
+		->where('curso', 'LIKE', "Informática")
+		->count();
+
+		$qtdInfo = DB::table('dados')
+		->select('curso')
+		->where('curso', 'LIKE', "Sistemas para Intern")
 		->count();
 
    		 return view('dados', ['dados' => $dados, 'qtdMecanica' => $qtdMecanica, 'qtdEletro' => $qtdEletro, 'qtdSis' => $qtdSis, 'qtdInfo' => $qtdInfo]);

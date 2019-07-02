@@ -1,13 +1,16 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+        <link rel="manifest" href="manifest.json">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>eSala</title>
+        
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
+
 
         <!-- Styles -->
         <style>
@@ -150,3 +153,11 @@
     </body>
 
 </html>
+<script>
+    
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js')
+    .then(reg => console.info('registered sw', reg))
+    .catch(err => console.error('error registering sw', err));
+}
+</script>
