@@ -1,5 +1,6 @@
 {
   "name": "eSala",
+  "short_name": "eSala",
   "theme_color": "#279827",
   "background_color": "#abeeb8",
   "display": "standalone",
@@ -46,5 +47,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
+  ]
 }
