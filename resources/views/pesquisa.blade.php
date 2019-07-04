@@ -5,19 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>eSala</title>
-            <link rel="manifest" href="/manifest.json">
+            <link rel="manifest" href="manifest.json/">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
         <!-- Fonts -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" async></script>
 
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"async></script>
 
        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
-       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"async></script>
 
         <style type="text/css">
             .box{
@@ -60,11 +60,26 @@
     }
     .opt a:hover{
         background-color: green;
-    }            
+    }   
+    .center{
+        font-family: nunito;
+
+    }
+    /*.bto{
+        float: right;
+    margin-top: 15px;
+    margin-right: 9px;
+    } */        
         </style>            
     </head>
     <body>
-        <br />
+        <!-- <a href="{{url('/logados')}}" class="bto btn btn-secondary" align="right">Voltar</a>-->
+        <br /> 
+
+        <div class="center" align="center"><h3><b>Selecione os dados sobre seu curso</b></h3></div>
+        
+
+
         <form method="POST" action="{{ url('/pesquisa/salvar') }}">
         <div class="estilos">
             <div class="container box">
@@ -121,7 +136,7 @@
     </footer>     -->
     </body>
 </html>
-<script>
+<script async>
       $(document).ready(function(){
         $('.dynamic').change(function(){
                 if ($(this).val() !=''){

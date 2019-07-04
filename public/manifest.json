@@ -5,7 +5,7 @@
   "background_color": "#abeeb8",
   "display": "standalone",
   "Scope": "/",
-  "start_url": "/",
+  "start_url": "/professores",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",

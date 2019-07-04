@@ -30,7 +30,7 @@ class GraficoController extends Controller
 		->where('curso', 'LIKE', "Informática")
 		->count();
 
-		$qtdInfo = DB::table('dados')
+		$qtdSis = DB::table('dados')
 		->select('curso')
 		->where('curso', 'LIKE', "Sistemas para Intern")
 		->count();

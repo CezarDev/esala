@@ -1,16 +1,18 @@
-self.addEventListener('install', function(event) {
-  // Perform install steps
-});
+// self.addEventListener('install', function(event) {
+//   // Perform install steps
+// });
 
 var CACHE_NAME = 'esala-v1';
 var urlsToCache = [
   '/',
-  '/index.html',
-  '/app.css',
-  '/app.js',
-  '/lista/professores/',
-  '/styles/main.css',
-  '/script/main.js'
+  '/welcome/',
+  '/app/',
+  '/logados/',
+  'app.css/',
+  'app.js/',
+  'lista/professores/',
+  'styles/main.css/',
+  'script/main.js/'
 ];
 
 self.addEventListener('install', function(event) {

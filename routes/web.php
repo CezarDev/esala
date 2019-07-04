@@ -26,10 +26,7 @@ Route::get('/logados', function () {
 	return view('logados');
 });
 
-Route::get('/teste', function () {
-dd(auth()->user());
 
-});
 
 // Route::get('/pesquisa', function () {
 //     return view('pesquisa');
@@ -142,6 +139,8 @@ Route::post('/pesquisa/salvar', 'PesquisaController@salvar')->name('pesquisa.sal
 Route::get('/atendimento', 'AtendimentoController@index');
 Route::post('/atendimento/fetch', 'AtendimentoController@fetch')->name('atendimento.fetch');
 Route::post('/atendimento/salvar', 'AtendimentoController@salvar')->name('atendimento.salvar');
+
+Route::post('/vai', 'AtendimentoController@mostra');
 
 Route::get('/contar','GraficoController@contaCurso');
 

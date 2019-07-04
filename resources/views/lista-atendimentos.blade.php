@@ -4,14 +4,14 @@
         <meta charset="utf-8">
 
         <title>eSala</title>
-        <link rel="manifest" href="/manifest.json">
+        <link rel="manifest" href="manifest.json/">
          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
       
 
-       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"async></script>
 
        <style>
 
@@ -29,7 +29,7 @@
     }
     .nome{
         color: black;
-        font-family: cursive;
+        font-family: nunito;
 
     }
 
@@ -44,7 +44,7 @@
             @auth
                             
                             <div class="nome">
-                            Professor(a) {{Auth::user()->nome}} 
+                           <b>Professor(a) {{Auth::user()->nome}}</b> 
                              </div>
                   
                     <div class="panel-body">

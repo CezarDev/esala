@@ -2,14 +2,22 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#279827"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'eSALA') }}</title>
 
+    <title>{{ config('app.name', 'eSALA') }}</title>
+    <link rel="manifest" href="manifest.json/">
+    <!-- icon in the highest resolution we need it for -->
+    <link rel="icon" sizes="192x192" href="icon.png">
+
+
+<!-- multiple icons for IE -->
+    <meta name="msapplication-square310x310logo" content="icon_largetile.png">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

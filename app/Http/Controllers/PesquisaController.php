@@ -47,7 +47,7 @@ class PesquisaController extends Controller
     function salvar(Request $request){
 
     Dado::create($request->all());
-    return redirect("/")->with("mensagem", "Obrigado por participar!!");
+    return redirect("/logados")->with("mensagem", "Obrigado por participar!!");
     }
 
 

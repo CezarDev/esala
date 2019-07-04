@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Disciplina;
+use App\Dados;
 use Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -59,7 +60,8 @@ class AdminController extends Controller
     }
 
     public function pegarProfessores(){
-        $professores = User::get();
+        $professores = User::orderBy('nome', 'asc')
+        ->get();
         return view('todosProfessores' , ['professores' => $professores]);
         //return printf("format");
     }
@@ -223,6 +225,35 @@ public function alterarDisc(Request $request, $id){
         $user = Disciplina::findOrFail($id);
         $user->delete();
         return redirect("admin/disciplina/lista")->with("mensagem", "Disciplina excluída com sucesso");
+    }
+
+    public function pegarDados(){
+
+        $dados = DB::table('dados')
+        ->select('modalidade', 'curso', 'turma')
+        ->get();   
+
+        $qtdMecanica = DB::table('dados')
+        ->select('curso')
+        ->where('curso', 'LIKE', "Mecânica")
+        ->count();
+
+        $qtdEletro = DB::table('dados')
+        ->select('curso')
+        ->where('curso', 'LIKE', "Eletrotécnica")
+        ->count();
+
+        $qtdInfo = DB::table('dados')
+        ->select('curso')
+        ->where('curso', 'LIKE', "Informática")
+        ->count();
+
+        $qtdSis = DB::table('dados')
+        ->select('curso')
+        ->where('curso', 'LIKE', "Sistemas para Intern")
+        ->count();
+
+         return view('dados', ['dados' => $dados, 'qtdMecanica' => $qtdMecanica, 'qtdEletro' => $qtdEletro, 'qtdSis' => $qtdSis, 'qtdInfo' => $qtdInfo]);
     }
 
 }

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>eSala</title>
-            <link rel="manifest" href="/manifest.json">
+           <link rel="manifest" href="manifest.json/">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
         <!-- Fonts -->
@@ -14,7 +14,7 @@
 
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 
        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
@@ -80,7 +80,10 @@
     .titulo{
         font-family: cursive;
         text-shadow: 2px;
-    }          
+    } 
+    h2{
+        font-family: nunito;
+    }         
         </style>            
     </head>
     <body><br><p class="titulo">
@@ -95,20 +98,19 @@
             <option value="">Nome</option>
             @foreach($lista as $nome)
             <option value="{{$nome->nome}}">
-
                 {{$nome->nome}} 
-
-
-            </option>
-           <!--  <input type="hidden" name="id" id="id" value="{{$nome->id}}"> -->
+                {{$nome->id}} 
+            </option>            
             @endforeach 
-            </select>            
-        </div>
-                
-       
-            <div class="form-group">
-            <select name="user_id" id="id"class="col-sm-2 form-control dynamic" required autofocus>
-            <option value="">id</option>
+            </select> 
+            <br>           
+        <!-- </div>
+             <div class="form-group">   
+                <input type="hidden" name="id" id="id" class="form-control dynamic" value="">
+            </div> -->
+             <div class="form-group">
+            <select name="user_id" id="id"class="col-sm-2 form-control dynamic">
+            <option value=""></option>
             @foreach($lista as $id)
              <option value="{{$id->id}}">
                 {{$id->id}}

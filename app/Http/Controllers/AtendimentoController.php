@@ -30,21 +30,21 @@ class AtendimentoController extends Controller
 
     function fetch(Request $request){
 
-    	$select = $request->get('select');
+        $select = $request->get('select');
         //$input = $request->get('input');
-    	$value = $request->get('value');
-    	$dependent = $request->get('dependent');
-    	$data = DB::table('users')->where($select, $value)->groupBy($dependent)->get();
+        $value = $request->get('value');
+        $dependent = $request->get('dependent');
+        $data = DB::table('users')->where($select, $value)->groupBy($dependent)->get();
 
-    	$output = '<option value="">Selecione '.ucfirst($dependent).'</option>';
-    	foreach ($data as $row) {
-    		$output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
-    	}
-    	echo $output;
+        $output = '<option value="">Selecione '.ucfirst($dependent).'</option>';
+        foreach ($data as $row) {
+            $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
+        }
+        echo $output;
     }
 
-    function create(array $data){
-    	return Atendimento::create([
+   function create(array $data){
+        return Atendimento::create([
             'nome'       => $data['nome'],
             'user_id'    => $data['user_id'],
             'data'       => $data['data'],
@@ -54,17 +54,18 @@ class AtendimentoController extends Controller
             'curso'      => $data['curso'],
         ]);
     }
-
-
-
     function salvar(Request $request){
         
         //return view ('atendimento',dd($request));
         
-
      Atendimento::create($request->all());
-     return redirect("/")->with("mensagem", "Atendimento registrado com sucesso");
+     return redirect("/logados")->with("mensagem", "Atendimento registrado com sucesso");
     }
 
 
+    function mostra(Request $request){
+
+        $objeto = $request->get('id');
+        return  view ('contar', ['objeto' => $objeto]);
+    }
 }

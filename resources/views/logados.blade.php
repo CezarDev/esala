@@ -2,13 +2,12 @@
 <html>
 
 <head>
-    <link rel="manifest" href="/manifest.json">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>eSALA</title>
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="manifest.json/">
 
     
     <!-- Bootstrap CSS CDN -->
@@ -265,7 +264,12 @@ a.article, a.article:hover {
 </head>
 
 <body>
-
+@if(Session::has('mensagem'))
+                        <div class="alert alert-success">{{Session::get('mensagem')}}</div>
+                        @endif
+                        @if(Session::has('erromsg'))
+                        <div class="alert alert-danger">{{Session::get('erromsg')}}</div>
+                        @endif
     <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
@@ -309,9 +313,7 @@ a.article, a.article:hover {
                 <li>
                     <a href="http://www.ifms.edu.br/site">IFMS</a>
                 </li>
-                <li>
-                    <a href="#">Mensagens</a>
-                </li>
+                
             </ul>
         </nav>
 
@@ -320,6 +322,7 @@ a.article, a.article:hover {
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
+
 
                     <button type="button" id="sidebarCollapse" class="navbar-btn">
                         <span></span>

@@ -4,11 +4,20 @@
     <title>eSALA</title>
 </head>
 <body>
-<h2> tem isso</h2>
+
+<a href="{{url('/admin')}}" class="btn btn-secondary" align="right">Voltar</a>
 </body>
 </html>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<style>
+    .btn{
+        float: right;
+    margin-top: 15px;
+    margin-right: 9px;
+    }
 
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 <canvas id="myChart"></canvas>
 
 <script>
@@ -24,25 +33,25 @@ var chart = new Chart(ctx, {
             label: 'Mecanica',
             backgroundColor: 'blue',
             borderColor: 'rgb(255, 99, 132)',
-            data: [{{$qtdMecanica}},7,2,8,9,25,8,33,19,7,1,40]
+            data: [0,0,0,0,0,{{$qtdMecanica}},0,0,0,0,0]
         },
         {
             label: 'Informática',
             backgroundColor: 'green',
             borderColor: 'rgb(0, 255, 255)',
-            data: [9, 40, 5, 12, 20, 30, 45,7,2,8,5,7]
+            data: [0,0,0,0,0,{{$qtdInfo}},0,0,0,0,0]
         },
         {
             label: 'Eletrotécnica',
             backgroundColor: 'orange',
             borderColor: 'rgb(0, 204, 0)',
-            data: [1, 10, 5, 22, 15, 25, 40,5,25,3,39,8]
+            data: [0,0,0,0,0,{{$qtdEletro}},0,0,0,0,0]
         },
         {
             label: 'Sistemas para Internet',
             backgroundColor: 'red',
             borderColor: 'rgb(60, 59, 10)',
-            data: [8, 10, 4, 8, 17, 38, 35,17,5,26,36,2]    
+            data: [0,0,0,0,0,{{$qtdSis}},0,0,0,0,0]    
 
         }]
 
